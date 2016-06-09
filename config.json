@@ -1,0 +1,11 @@
+{
+	"development":{
+		"port" : 3005
+	},
+	"staging":{
+	   "port": 3005
+	},
+	"production":{
+	   "port": 3006
+	}
+}
