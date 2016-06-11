@@ -26,10 +26,21 @@ const populationDao = {
     const popUnwind = {$unwind: '$population'};
     const totalPopByCityAndDate = {$group: {_id: {date:'$date', city: '$city'}, totalPopulation:{$sum:'$population.count'} }  };
     const getMinPopulations = {$group: {_id:'$_id.city', maxPopulation:{$min:'$totalPopulation' } } };
-    const setFormat = {$project: {city: '$_id', maxPopulation:'$maxPopulation', _id: 0} };
+    const setFormat = {$project: {city: '$_id', minPopulation:'$maxPopulation', _id: 0} };
     const sortAlphabetically = {$sort: { city: 1}};
 
     const pipeline = [popUnwind, totalPopByCityAndDate, getMinPopulations, setFormat, sortAlphabetically];
+
+    PopulationModel.aggregate(pipeline, callback);
+  },
+  getAveragePopulation: (callback) => {
+    const popUnwind = {$unwind: '$population'};
+    const totalPopByCityAndDate =  { $group: { _id: { city: '$city', date: '$date' }, pop: { $sum: '$population.count' } } };
+    const averagePop = { $group: { _id: '$_id.city', avgCityPop: { $avg: '$pop' } } };
+    const setFormat = {$project:{city: '$_id', averagePop: '$avgCityPop', _id: 0} };
+    const sortAlphabetically = {$sort: {'city':1}};
+
+    const pipeline = [popUnwind, totalPopByCityAndDate, averagePop, setFormat, sortAlphabetically];
 
     PopulationModel.aggregate(pipeline, callback);
   }

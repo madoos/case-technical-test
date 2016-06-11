@@ -8,7 +8,10 @@ const populationManager = {
     populationDao.getMaximunPopulation(callback);
   },
   getMinimunPopulation: (callback) => {
-      populationDao.getMinimunPopulation(callback);  
+      populationDao.getMinimunPopulation(callback);
+  },
+  getAveragePopulation: (callback) => {
+    populationDao.getAveragePopulation(callback);
   }
 };
 
