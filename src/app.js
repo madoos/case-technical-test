@@ -30,7 +30,7 @@ app.use(utilMiddleware.enableCORS);
 app.use('/population/', populationByAgeAndCityRouter);
 app.use('/population/byage/', populationByAgeRouter);
 app.use('/population/bycity/', populationByCityRouter);
-app.use('/population/record/', populationByRecordRouter);
+app.use('/population/byrecord/', populationByRecordRouter);
 
 app.listen(config.port, () => console.log(`app listenning in port ${config.port} on enviroment ${process.env.NODE_ENV}`) );
 

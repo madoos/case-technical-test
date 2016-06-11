@@ -6,6 +6,9 @@ const populationManager = {
   },
   getMaximunPopulation: (callback) => {
     populationDao.getMaximunPopulation(callback);
+  },
+  getMinimunPopulation: (callback) => {
+      populationDao.getMinimunPopulation(callback);  
   }
 };
 

@@ -14,11 +14,17 @@ const populationController = {
         if(!err)res.status(200).json(data);
         else res.status(500).send(err);
     });
+  },
+  getMinimunPopulation: (req, res) => {
+    populationManager.getMinimunPopulation((err, data) =>{
+        if(!err)res.status(200).json(data);
+        else res.status(500).send(err);
+    });
   }
 };
 
 populationRouter.get('/all/', populationController.getPopulationByCity);
 populationRouter.get('/max/',populationController.getMaximunPopulation);
-
+populationRouter.get('/min/',populationController.getMinimunPopulation);
 
 export default populationRouter;

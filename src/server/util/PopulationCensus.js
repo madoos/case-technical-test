@@ -15,7 +15,6 @@ class PopulationCensus {
 		var date = self.randomDate(new Date(2016, 0, 1), new Date());
 
 		return this.provinces.map( function(province){
-
 			return {
 				date,
 				ts :( function(){return date.getTime();} )() ,
@@ -28,7 +27,7 @@ class PopulationCensus {
 
 	getRandomPopulation(){
 		const LifeExpectancy = 83;
-		var ages = Array.apply( 0, Array(LifeExpectancy) ).map( (x, y) => { return y + 1; } ); 
+		var ages = Array.apply( 0, Array(LifeExpectancy) ).map( (x, y) => { return y + 1; } );
 
 		var Fakepopulation = ages.map( (age) => {
 			return {

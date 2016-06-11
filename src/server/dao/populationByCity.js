@@ -1,26 +1,35 @@
 import PopulationModel from '../../model/PopulationCensus';
 
 const populationDao = {
-  //falta
   getPopulationByCity: (callback) => {
-    var unwindPopulation = {$unwind: '$population'};
-    var sumPopulation = {$sum: '$population.count'};
-    var totalPopulationByCity = {$group: { _id : '$city', totalPopulation: sumPopulation} };
-    var sortResults = {$sort: {_id: 1}};
-    var setFormat = {$project: {city: '$_id',totalPopulation: '$totalPopulation',  _id : 0  }};
-    var pipeline = [unwindPopulation, totalPopulationByCity, sortResults, setFormat];
+    const popUnwind = {$unwind: '$population'};
+    const totalPopByCityAndDate = {$group: {_id: {date:'$date', city: '$city'}, totalPopulation:{$sum:'$population.count'} }  };
+    const setFormat = {$project:{city: '$_id.city', date: '$_id.date', totalPopulation: '$totalPopulation',  _id: 0}};
+    const sortAlphabetically = {$sort: { city: 1}};
+
+    const pipeline = [popUnwind, totalPopByCityAndDate, setFormat, sortAlphabetically];
 
     PopulationModel.aggregate(pipeline, callback);
   },
   getMaximunPopulation: (callback) => {
-    var unwindPopulation = {$unwind: '$population'};
-    var sumPopulation = {$sum: '$population.count'};
-    var totalPopulationByDateAndCity = {$group: {_id : { city: '$city', date: '$date'}, maximunPopulation: sumPopulation }};
-    var sortDescending = { $sort: { maximunPopulation: -1 } };
-    var getMaxVal = {$limit:1};
-    var setFormat = {$project:{_id : 0, city: '$_id.city', date: '$_id.date', maximunPopulation: '$maximunPopulation'} };
+    const popUnwind = {$unwind: '$population'};
+    const totalPopByCityAndDate = {$group: {_id: {date:'$date', city: '$city'}, totalPopulation:{$sum:'$population.count'} }  };
+    const getMaxPopulations = {$group: {_id:'$_id.city', maxPopulation:{$max:'$totalPopulation' } } };
+    const setFormat = {$project: {city: '$_id', maxPopulation:'$maxPopulation', _id: 0} };
+    const sortAlphabetically = {$sort: { city: 1}};
 
-    var pipeline = [unwindPopulation, totalPopulationByDateAndCity, sortDescending, getMaxVal, setFormat];
+    const pipeline = [popUnwind, totalPopByCityAndDate, getMaxPopulations, setFormat, sortAlphabetically];
+
+    PopulationModel.aggregate(pipeline, callback);
+  },
+  getMinimunPopulation: (callback) => {
+    const popUnwind = {$unwind: '$population'};
+    const totalPopByCityAndDate = {$group: {_id: {date:'$date', city: '$city'}, totalPopulation:{$sum:'$population.count'} }  };
+    const getMinPopulations = {$group: {_id:'$_id.city', maxPopulation:{$min:'$totalPopulation' } } };
+    const setFormat = {$project: {city: '$_id', maxPopulation:'$maxPopulation', _id: 0} };
+    const sortAlphabetically = {$sort: { city: 1}};
+
+    const pipeline = [popUnwind, totalPopByCityAndDate, getMinPopulations, setFormat, sortAlphabetically];
 
     PopulationModel.aggregate(pipeline, callback);
   }
