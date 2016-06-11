@@ -30,8 +30,8 @@ const populationController = {
 };
 
 populationRouter.get('/all/', populationController.getPopulationByCity);
-populationRouter.get('/average/',populationController.getAveragePopulation);
 populationRouter.get('/max/',populationController.getMaximunPopulation);
 populationRouter.get('/min/',populationController.getMinimunPopulation);
+populationRouter.get('/average/',populationController.getAveragePopulation);
 
 export default populationRouter;
