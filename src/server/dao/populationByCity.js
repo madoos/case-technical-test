@@ -37,7 +37,7 @@ const populationDao = {
     const popUnwind = {$unwind: '$population'};
     const totalPopByCityAndDate =  { $group: { _id: { city: '$city', date: '$date' }, pop: { $sum: '$population.count' } } };
     const averagePop = { $group: { _id: '$_id.city', avgCityPop: { $avg: '$pop' } } };
-    const setFormat = {$project:{city: '$_id', averagePop: '$avgCityPop', _id: 0} };
+    const setFormat = {$project:{city: '$_id', avgPopulation: '$avgCityPop', _id: 0} };
     const sortAlphabetically = {$sort: {'city':1}};
 
     const pipeline = [popUnwind, totalPopByCityAndDate, averagePop, setFormat, sortAlphabetically];
