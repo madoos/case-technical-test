@@ -6,6 +6,8 @@ import bodyParser from 'body-parser';
 import methodOverride from 'method-override';
 import utilMiddleware from './server/middleware/util.js';
 import populationByAgeAndCityRouter from './server/routers/populationByAgeAndCity';
+import populationByAgeRouter from './server/routers/populationByAge';
+import populationByCityRouter from './server/routers/populationByCity';
 
 const config = require( path.join( __dirname,'../config.json') )[process.env.NODE_ENV];
 
@@ -24,7 +26,9 @@ app.use(methodOverride('X-Method-Override')); 		// IBM
 app.use(utilMiddleware.enableCORS);
 
 //ROUTERS
-app.use(populationByAgeAndCityRouter);
+app.use('/population/', populationByAgeAndCityRouter);
+app.use('/population/byage/', populationByAgeRouter);
+app.use('/population/bycity/', populationByCityRouter);
 
 app.listen(config.port, () => console.log(`app listenning in port ${config.port} on enviroment ${process.env.NODE_ENV}`) );
 

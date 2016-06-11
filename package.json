@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "server:start:es6:dev": "NODE_ENV=development babel-node ./src/app.js"
+    "es6:server": "NODE_ENV=development babel-node ./src/app.js",
+    "es5:server": "NODE_ENV=development node ./dist/app.js"
   },
   "repository": {
     "type": "git",
