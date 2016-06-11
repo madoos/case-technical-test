@@ -1,6 +1,14 @@
 {
 	"development":{
-		"port" : 3005
+		"port" : 3005,
+		"db":{
+			"ip":"127.0.0.1",
+			"port":"",
+			"user":"",
+			"pass":"",
+			"dbName":"census-population",
+			"conn":"mongodb://127.0.0.1/census-population"
+		}
 	},
 	"staging":{
 	   "port": 3005

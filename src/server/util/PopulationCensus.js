@@ -11,12 +11,10 @@ class PopulationCensus {
 
 	getFakeCensus(){
 		var self = this;
-
-
+		//var randomYear = 0 | self.getRandomNumber(1999, 2012);
+		var date = self.randomDate(new Date(2016, 0, 1), new Date());
 
 		return this.provinces.map( function(province){
-			var randomYear = 0 | self.getRandomNumber(1999, 2012);
-			var date = self.randomDate(new Date(randomYear, 0, 1), new Date());
 
 			return {
 				date,
@@ -24,6 +22,7 @@ class PopulationCensus {
 				city: province,
 				population: self.getRandomPopulation()
 			};
+
 		});
 	}
 
@@ -34,7 +33,7 @@ class PopulationCensus {
 		var Fakepopulation = ages.map( (age) => {
 			return {
 				age,
-				count: 0 | Math.random() * 1000
+				count: 0 | Math.random() * 10000
 			};
 		});
 
