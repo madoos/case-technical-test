@@ -8,6 +8,7 @@ import utilMiddleware from './server/middleware/util.js';
 import populationByAgeAndCityRouter from './server/routers/populationByAgeAndCity';
 import populationByAgeRouter from './server/routers/populationByAge';
 import populationByCityRouter from './server/routers/populationByCity';
+import populationByRecordRouter from './server/routers/populationByRecord';
 
 const config = require( path.join( __dirname,'../config.json') )[process.env.NODE_ENV];
 
@@ -29,6 +30,7 @@ app.use(utilMiddleware.enableCORS);
 app.use('/population/', populationByAgeAndCityRouter);
 app.use('/population/byage/', populationByAgeRouter);
 app.use('/population/bycity/', populationByCityRouter);
+app.use('/population/record/', populationByRecordRouter);
 
 app.listen(config.port, () => console.log(`app listenning in port ${config.port} on enviroment ${process.env.NODE_ENV}`) );
 

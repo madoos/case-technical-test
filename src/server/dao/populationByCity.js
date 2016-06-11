@@ -7,7 +7,7 @@ const populationDao = {
     var sumPopulation = {$sum: '$population.count'};
     var totalPopulationByCity = {$group: { _id : '$city', totalPopulation: sumPopulation} };
     var sortResults = {$sort: {_id: 1}};
-    var setFormat = {$project: {city: '$_id',totaloPulation: '$totalPopulation',  _id : 0  }};
+    var setFormat = {$project: {city: '$_id',totalPopulation: '$totalPopulation',  _id : 0  }};
     var pipeline = [unwindPopulation, totalPopulationByCity, sortResults, setFormat];
 
     PopulationModel.aggregate(pipeline, callback);
@@ -18,8 +18,9 @@ const populationDao = {
     var totalPopulationByDateAndCity = {$group: {_id : { city: '$city', date: '$date'}, maximunPopulation: sumPopulation }};
     var sortDescending = { $sort: { maximunPopulation: -1 } };
     var getMaxVal = {$limit:1};
+    var setFormat = {$project:{_id : 0, city: '$_id.city', date: '$_id.date', maximunPopulation: '$maximunPopulation'} };
 
-    var pipeline = [unwindPopulation, totalPopulationByDateAndCity, sortDescending, getMaxVal];
+    var pipeline = [unwindPopulation, totalPopulationByDateAndCity, sortDescending, getMaxVal, setFormat];
 
     PopulationModel.aggregate(pipeline, callback);
   }
