@@ -5,6 +5,8 @@ import helmet from 'helmet';
 import bodyParser from 'body-parser';
 import methodOverride from 'method-override';
 import utilMiddleware from './server/middleware/util.js';
+
+import insertPopulationRouter from './server/routers/insertPopulation';
 import populationByAgeAndCityRouter from './server/routers/populationByAgeAndCity';
 import populationByAgeRouter from './server/routers/populationByAge';
 import populationByCityRouter from './server/routers/populationByCity';
@@ -27,6 +29,7 @@ app.use(methodOverride('X-Method-Override')); 		// IBM
 app.use(utilMiddleware.enableCORS);
 
 //ROUTERS
+app.use('/population/add/', insertPopulationRouter);
 app.use('/population/', populationByAgeAndCityRouter);
 app.use('/population/byage/', populationByAgeRouter);
 app.use('/population/bycity/', populationByCityRouter);

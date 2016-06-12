@@ -1,9 +1,6 @@
 import PopulationModel from '../../model/PopulationCensus';
 
 const populationDao = {
-  makeFakeCensus: (data, onInsert) => {
-    PopulationModel.collection.insert(data, onInsert);
-  },
   getPopulationByAgeAndCity: (callback) => {
     const popUnwind = {$unwind: '$population'};
     const totalPopByAgeAndCity = { $group: { _id: { date: '$date' , age:'$population.age', city: '$city' }, totalPopulation: { $sum: '$population.count' } } };

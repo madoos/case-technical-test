@@ -46,6 +46,11 @@ class PopulationCensus {
 	getRandomNumber(min, max) {
 	  return Math.random() * (max - min) + min;
 	}
+	
+	isoDateToTimeStamp(isoDate){
+		var date = new Date(isoDate);
+		return date.getTime();
+	}
 }
 
 
