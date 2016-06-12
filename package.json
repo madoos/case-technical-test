@@ -4,10 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "db:makeFakeCensus": "curl localhost:3005/population/add/fakecensus/",
+    "db:makeFakeCensus": "curl --silent localhost:3005/population/add/fakecensus/ > /dev/null",
     "es6:start:server": "NODE_ENV=development babel-node ./src/app.js",
     "es5:start:server": "NODE_ENV=development node ./dist/app.js",
-    "pm2:start:es5:server": "NODE_ENV=development pm2 start dist/app.js",
+    "pm2:start:es5:server": "NODE_ENV=development pm2 start dist/app.js --name case-technical-test",
     "start": "npm install &&gulp build:dist &&npm run pm2:start:es5:server &&npm run db:makeFakeCensus"
   },
   "repository": {
