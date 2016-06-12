@@ -6,7 +6,7 @@ const populationDao = {
     censusModel.save(callback);
   },
   makeFakeCensus: (data, callback) => {
-    PopulationModel.collection.insert(data, callback);
+    populationModel.collection.insert(data, callback);
   }
 };
 

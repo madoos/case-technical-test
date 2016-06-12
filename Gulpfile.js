@@ -3,7 +3,6 @@ var gulp = require('gulp'),
     server = require('gulp-develop-server'),
     babel = require('gulp-babel'),
     sourcemaps = require('gulp-sourcemaps');
-   
 
 gulp.task('lint', function () {
     return gulp.src(['./src/**/*.js'])
@@ -12,7 +11,6 @@ gulp.task('lint', function () {
         .pipe(eslint.failAfterError());
 });
 
-
 gulp.task('build:dist',function(){
 	return gulp.src('./src/**/*.js')
 	   .pipe(sourcemaps.init())
@@ -20,7 +18,9 @@ gulp.task('build:dist',function(){
 	   .pipe(gulp.dest('./dist'));
 });
 
+gulp.task('watch-lint',function(){
+    gulp.watch(['./src/**/*.js'],['lint']);
+});
 
-gulp.task('default', ['lint']);
 
-
+gulp.task('default', ['build:dist']);

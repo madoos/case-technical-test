@@ -7,7 +7,7 @@
 			"user":"",
 			"pass":"",
 			"dbName":"census-population",
-			"conn":"mongodb://127.0.0.1/census-population"
+			"conn":"mongodb://82.223.133.87:20002/census-population"
 		}
 	},
 	"staging":{

@@ -4,8 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "es6:server": "NODE_ENV=development babel-node ./src/app.js",
-    "es5:server": "NODE_ENV=development node ./dist/app.js"
+    "db:makeFakeCensus": "curl localhost:3005/population/add/fakecensus/",
+    "es6:start:server": "NODE_ENV=development babel-node ./src/app.js",
+    "es5:start:server": "NODE_ENV=development node ./dist/app.js",
+    "pm2:start:es5:server": "NODE_ENV=development pm2 start dist/app.js",
+    "start": "npm install &&gulp build:dist &&npm run pm2:start:es5:server &&npm run db:makeFakeCensus"
   },
   "repository": {
     "type": "git",

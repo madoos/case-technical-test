@@ -8,7 +8,7 @@ const populationDao = {
     const sortAscending = {$sort: { age:1 , city:1 }};
 
     const pipeline = [popUnwind, totalPopByAgeAndCity, setFormat, sortAscending];
-
+     
     PopulationModel.aggregate(pipeline ,callback);
   },
   getMaximunPopulation: (callback) => {
