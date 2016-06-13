@@ -89,7 +89,7 @@ Repo: [https://github.com/madoos/case-technical-test.git](https://github.com/mad
 > No es necesario llamar a este endpoint para que se introduzcan datos en la base de datos, esto lo hace la aplicación de forma automática la primera vez.
 ----
 # Contenedor de Docker
-> En la raiz del proyecto donde se encuentra Dockerfile.
+> En la raíz del proyecto.
 
 1. docker build -t nombre_del_contenedor .
 2. docker run puerto:3005 -d nombre_del_contenedor
