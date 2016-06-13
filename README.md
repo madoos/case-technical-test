@@ -92,7 +92,7 @@ Repo: [https://github.com/madoos/case-technical-test.git](https://github.com/mad
 > En la raíz del proyecto.
 
 1. docker build -t nombre_del_contenedor .
-2. docker run puerto:3005 -d nombre_del_contenedor
+2. docker run -p puerto:3005 -d nombre_del_contenedor
 3. ir al host en el puerto asignado
 
 ----
