@@ -56,6 +56,11 @@ Repo: [https://github.com/madoos/case-technical-test.git](https://github.com/mad
 
 
 ----
+
+##Número de personas según último registro
+1. GET: /population/byrecord/last/
+
+----
 ## Añadir población
 
 1. POST:  /population/add/census/  
@@ -86,8 +91,8 @@ Repo: [https://github.com/madoos/case-technical-test.git](https://github.com/mad
 # Contenedor de Docker
 > En la raiz del proyecto donde se encuentra Dockerfile.
 
-1. docker build -t <nombre-del-contenedor> .
-2. docker run -p <puerto>:3005 -d <nombre-del-contenedor>
+1. docker build -t nombre_del_contenedor .
+2. docker run puerto:3005 -d nombre_del_contenedor
 3. ir al host en el puerto asignado
 
 ----
