@@ -41,18 +41,18 @@ Repo: [https://github.com/madoos/case-technical-test.git](https://github.com/mad
 ## Número de personas por ciudad
 
 1. GET:  /population/bycity/all/  `
-2. GET:  /population//bycity/max/
-3. GET:  /population//bycity/min/
-4. GET: /population//bycity/average/
+2. GET:  /population/bycity/max/
+3. GET:  /population/bycity/min/
+4. GET: /population/bycity/average/
 
 
 ----
 ## Número de personas por edad
 
 1. GET:  /population/byage/all/  
-2. GET:  /population//byage/max/
-3. GET:  /population//byage/min/
-4. GET: /population//byage/average/
+2. GET:  /population/byage/max/
+3. GET:  /population/byage/min/
+4. GET: /population/byage/average/
 
 
 ----
