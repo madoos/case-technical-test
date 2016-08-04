@@ -1,4 +1,4 @@
-# Prueba técnica Case && jenkins CONECTADO CON JENKINS
+# Prueba técnica Case && jenkins test 2 
 
 Repo: [https://github.com/madoos/case-technical-test.git](https://github.com/madoos/case-technical-test.git)
 
